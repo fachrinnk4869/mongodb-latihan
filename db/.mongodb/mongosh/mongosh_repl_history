@@ -1,0 +1,39 @@
+show dbs
+use library
+show dbs
+db.books.find({ kategori: "pemrograman", "komentar.tanggal_pinjam": { $gte: new Date("2021-01-01"), $lte: new Date("2021-02-01") } });
+db.books.find().sort({ likes: -1 }).limit(3);
+db.books.find({ tahun_terbit: { $gte: 2018, $lte: 2020 }, jumlah_buku: { $gt: 10 } });
+db.books.find({ kategori: "pemrograman", author: { $size: 3 } });
+db.books.find({ $or: [ { "komentar.komentar": "bagus" }, { "komentar.rating": { $gte: 3, $lte: 5 } }] });
+db.books.find({ kategori: "pemrograman", likes: { $gt: 10 } });
+clear
+db.books.find()
+db.books.insertMany([ { judul: "Belajar JavaScript", kategori: "pemrograman", isbn: "0011001-SBN", publisher: "O'Reilly Media", tahun_terbit: 2019, author: [ { nama: "John Doe", email: "john@gmail.com" }, { nama: "Jane Roe", email: "jane@gmail.com" }, { nama: "Alice Bob", email: "alice@gmail.com" }], jumlah_buku: 15, likes: 20, komentar: { nama_peminjam: "Genta", tanggal_pinjam: new Date("2021-01-15"), komentar: "bagus", rating: 4 } }, { judul: "Mastering Python", kategori: "pemrograman", isbn: "0011002-SBN", publisher: "Packt Publishing", tahun_terbit: 2020, author: [ { nama: "Alice Bob", email: "alice@gmail.com" }, { nama: "Charlie Carol", email: "charlie@gmail.com" }], jumlah_buku: 5, likes: 15, komentar: { nama_peminjam: "Rina", tanggal_pinjam: new Date("2021-02-10"), komentar: "cukup menarik", rating: 5 } }, { judul: "Deep Learning with TensorFlow", kategori: "pemrograman", isbn: "0011003-SBN", publisher: "Manning Publications", tahun_terbit: 2021, author: [ { nama: "Dave Lee", email: "dave@gmail.com" }], jumlah_buku: 20, likes: 8, komentar: { nama_peminjam: "Budi", tanggal_pinjam: new Date("2021-01-20"), komentar: "bagus", rating: 3 } }, { judul: "Design Patterns", kategori: "pemrograman", isbn: "0011004-SBN", publisher: "Addison-Wesley", tahun_terbit: 2018, author: [ { nama: "Erich Gamma", email: "gamma@gmail.com" }, { nama: "Richard Helm", email: "helm@gmail.com" }, { nama: "Ralph Johnson", email: "johnson@gmail.com" }], jumlah_buku: 12, likes: 12, komentar: { nama_peminjam: "Susi", tanggal_pinjam: new Date("2020-12-25"), komentar: "sangat bagus", rating: 5 } }, { judul: "Clean Code", kategori: "pemrograman", isbn: "0011005-SBN", publisher: "Prentice Hall", tahun_terbit: 2019, author: [ { nama: "Robert C. Martin", email: "martin@gmail.com" }], jumlah_buku: 30, likes: 25, komentar: { nama_peminjam: "Fikri", tanggal_pinjam: new Date("2021-01-10"), komentar: "bagus sekali", rating: 5 } }] );
+db.books.find()
+show collections
+db.books.insertOne({ judul: "budi", /* String*/ kategori: "ok", /* String*/ isbn: "0011000-SBN", /* String*/ publisher: "oshiyo tanaka", /* String*/ tahun_terbit: NumberInt(2012), /* Integer (use NumberInt for better storage of integer values)*/ author: [/* Array of embedded documents*/ { nama: "mashimi onika", /* String*/ email: "onika@gmail.com", /* String*/ phone: "082929", /* String (phone number is often stored as a string to preserve leading zeroes)*/ address: "jalan jalan" /* String*/ }], jumlah_buku: NumberInt(12), /* Integer (NumberInt used for integer value)*/ likes: NumberInt(13), /* Integer (NumberInt for integer)*/ komentar: { /* Embedded document (Object)*/ nama_peminjam: "genta", /* String*/ tanggal_pinjam: new Date("2020-12-13"), /* Date (use ISODate or Date for date format)*/ komentar: "baguss", /* String*/ rating: NumberInt(4) /* Integer (NumberInt used for numerical value)*/ } });
+db.createCollection("books")
+db.book.drop()
+db.createCollection("book")
+show collections
+db.books.drop()
+db.createCollection("books")
+use library
+use book
+db.komentar_user.find()
+db.komentar_user.update( { nama: "wati" }, { $set: { nama: "wati", komentar: "tidak jadi", rating: 3 } } )
+db.komentar_user.find()
+db.komentar_user.remove({ nama : "ari" })
+db.komentar_user.find()
+db.komentar_user.insertMany([ { nama: "wati", komentar: "kurang ideal", rating: 5 }, { nama: "wulan", komentar: "sudah tepat", rating: 2 }, { nama: "ratna", komentar: "luar biasa", rating: 5 }, { nama: "encep", komentar: "parah", rating: 1 }, { nama: "ari", komentar: "lumayan", rating: 2 }] )
+db.komentar_user.find()
+db.komentar_user.insertMany([ { nama: "ahmad aulia", komentar: "kurang ideal" }, { nama: "elfan noviari", komentar: "sudah tepat" }] )
+db.komentar_user.find()
+show collections
+db.komentar_user.insertOne({'nama':"budi", komentar:"ok"})
+use komentar_user
+show dbs
+db.createCollection("mycollection")
+use komentar_user
+show dbs
