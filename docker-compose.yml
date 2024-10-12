@@ -2,9 +2,10 @@ services:
   mongo:
     container_name: mongo
     image: mongo
-    restart: always
+    restart: on-failure
     ports:
       - "27017:27017"
-    command: mongod
+    command: bash -c "mongod --fork --logpath /var/log/mongodb.log && mongorestore /dump && tail -f /var/log/mongodb.log"
     volumes:
-      - ./db:/data/db   # Mount the volume to persist MongoDB data
+      - ./dump:/dump   # Mount the dump folder to /dump in the container
+      - .:/app
