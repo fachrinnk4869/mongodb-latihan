@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"b8e8535caa8545fdb5802c7b1d09a9f6","collectionName":"peminjaman_buku","type":"collection"}
